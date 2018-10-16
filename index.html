@@ -8,13 +8,16 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <canvas width="900px" height="600px" ></canvas>
+    <canvas id="myCanvas" width="900px" height="600px" ></canvas>
     <script type="text/javascript">
-     img1.onload = function () {
-        ctx.drawImage(img1, 0, 0);
-     }
+    const canvasElem = document.querySelector('#myCanvas');
+    const ctx = canvasElem.getContext('2d');
+    const img = new Image();
 
-    img1.src = 'img/Home.jpg';
+     img.onload = function () {
+        ctx.drawImage(img, 0, 0);
+     }
+    img.src = 'img.jpg';
     </script>
 </body>
 </html>
