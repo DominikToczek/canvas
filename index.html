@@ -14,17 +14,29 @@
         <div class="control-panel">
             <p>Jasność</p>
             <div class="btn-container">
-                <button onclick="brightnessMinus()">-</button>
-                <button onclick="reset()">reset</button>       
-                <button onclick="brightnessPlus()">+</button>
+                <button onclick="changeBrightness(-100)">-100</button>
+                <button onclick="changeBrightness(-75)">-75</button>
+                <button onclick="changeBrightness(-50)">-50</button>
+                <button onclick="changeBrightness(-25)">-25</button>
+                <button onclick="changeBrightness(0)">0</button>
+                <button onclick="changeBrightness(25)">25</button>
+                <button onclick="changeBrightness(50)">50</button>
+                <button onclick="changeBrightness(75)">75</button>
+                <button onclick="changeBrightness(100)">100</button>
             </div>
         </div>
         <div class="control-panel">
             <p>Kontrast</p>
             <div class="btn-container">
-                <button onclick="contrastMinus()">-</button>
-                <button onclick="reset()">reset</button>       
-                <button onclick="contrastPlus()">+</button>
+                    <button onclick="changeContrast(-100)">-100</button>
+                    <button onclick="changeContrast(-75)">-75</button>
+                    <button onclick="changeContrast(-50)">-50</button>
+                    <button onclick="changeContrast(-25)">-25</button>
+                    <button onclick="changeContrast(0)">0</button>
+                    <button onclick="changeContrast(25)">25</button>
+                    <button onclick="changeContrast(50)">50</button>
+                    <button onclick="changeContrast(75)">75</button>
+                    <button onclick="changeContrast(100)">100</button>
             </div>
         </div>
         <div class="control-panel">
@@ -50,29 +62,37 @@
 
     const brightness = document.getElementById('brightness');
 
-    function brightnessMinus()
+    function truncate(value) {
+        if (value < 0) return 0;
+        if (value > 255) return 255;
+        return value;
+    }
+
+    function changeBrightness(brightness)
     {
+        reset();
         let imgData = context.getImageData(x, y, imageObj.width, imageObj.height);
         let data = imgData.data;
         for (let i = 0; i < data.length; i += 4)
         {
-            data[i] -= 10;
-            data[i+1] -= 10;
-            data[i+2] -= 10;
+            data[i] += 255 * (brightness / 100)
+            data[i+1] += 255 * (brightness / 100)
+            data[i+2] += 255 * (brightness / 100)
         }
 
         context.putImageData(imgData, x, y);
     }
 
-    function brightnessPlus()
-    {
+    function changeContrast(contrast) {
+        reset();
         let imgData = context.getImageData(x, y, imageObj.width, imageObj.height);
         let data = imgData.data;
+        let factor = (259.0 * (contrast + 255.0)) / (255.0 * (259.0 - contrast));
         for (let i = 0; i < data.length; i += 4)
         {
-            data[i] += 10;
-            data[i+1] += 10;
-            data[i+2] += 10;
+            data[i] = truncate(factor * (data[i] - 128.0) + 128.0);
+            data[i+1] = truncate(factor * (data[i+1] - 128.0) + 128.0);
+            data[i+2] = truncate(factor * (data[i+2] - 128.0) + 128.0);
         }
 
         context.putImageData(imgData, x, y);
