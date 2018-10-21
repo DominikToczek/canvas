@@ -10,22 +10,63 @@
 <body>
     <canvas id="myCanvas" width="900px" height="600px" ></canvas>
 
-
+    <div class="btn-container">
+        <p>Jasność</p>
+        <button onclick="brightnessMinus()">-</button>
+        <button onclick="reset()">reset</button>       
+        <button onclick="brightnessPlus()">+</button>
+    </div>
 
 
     <script type="text/javascript">
-    const canvasElem = document.getElementById('myCanvas');
-    const ctx = canvasElem.getContext('2d');
-    const img = new Image();
+    const canvas = document.getElementById('myCanvas');
+    const context = canvas.getContext('2d');
+    const x = 0;
+    const y = 0;
 
-    img.onload = function () 
-    {
-        ctx.drawImage(img, 0, 0);
-    }
-    img.src = 'img.jpg';
-
-
+    const imageObj = new Image();
     
+
+    const brightness = document.getElementById('brightness');
+
+    function brightnessMinus()
+    {
+        let imgData = context.getImageData(x, y, imageObj.width, imageObj.height);
+        let data = imgData.data;
+        for (let i = 0; i < data.length; i += 4)
+        {
+            data[i] -= 10;
+            data[i+1] -= 10;
+            data[i+2] -= 10;
+        }
+
+        context.putImageData(imgData, x, y);
+    }
+
+    function brightnessPlus()
+    {
+        let imgData = context.getImageData(x, y, imageObj.width, imageObj.height);
+        let data = imgData.data;
+        for (let i = 0; i < data.length; i += 4)
+        {
+            data[i] += 10;
+            data[i+1] += 10;
+            data[i+2] += 10;
+        }
+
+        context.putImageData(imgData, x, y);
+    }
+
+    function reset()
+    {
+        context.drawImage(imageObj, x, y);
+    }
+
+    imageObj.onload = function() {
+        context.drawImage(imageObj, x, y);
+    }
+
+    imageObj.src = 'img.jpg';
     </script>
 </body>
 </html>
