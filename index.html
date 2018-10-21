@@ -10,22 +10,22 @@
 <body>
     <canvas id="myCanvas" width="900px" height="600px" ></canvas>
 
-    <div class="bar"></div>
-    <div class="bar"></div>
-    <div class="bar"></div>
-
 
 
 
     <script type="text/javascript">
-    const canvasElem = document.querySelector('#myCanvas');
+    const canvasElem = document.getElementById('myCanvas');
     const ctx = canvasElem.getContext('2d');
     const img = new Image();
 
-     img.onload = function () {
+    img.onload = function () 
+    {
         ctx.drawImage(img, 0, 0);
-     }
+    }
     img.src = 'img.jpg';
+
+
+    
     </script>
 </body>
 </html>
