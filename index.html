@@ -38,16 +38,25 @@
                     <button onclick="changeContrast(75)">75</button>
                     <button onclick="changeContrast(100)">100</button>
             </div>
-        </div>
+        </div> 
+    </div>
+
+    <div class="control-container">
         <div class="control-panel">
             <p>Nasycenie</p>
             <div class="btn-container">
-                <button onclick="saturationMinus()">-</button>
-                <button onclick="reset()">reset</button>       
-                <button onclick="saturationPlus()">+</button>
+                    <button onclick="changeSaturation(-100)">-100</button>
+                    <button onclick="changeSaturation(-75)">-75</button>
+                    <button onclick="changeSaturation(-50)">-50</button>
+                    <button onclick="changeSaturation(-25)">-25</button>
+                    <button onclick="changeSaturation(0)">0</button>
+                    <button onclick="changeSaturation(25)">25</button>
+                    <button onclick="changeSaturation(50)">50</button>
+                    <button onclick="changeSaturation(75)">75</button>
+                    <button onclick="changeSaturation(100)">100</button>
             </div>
-        </div>    
-    </div> 
+        </div>   
+    </div>
     
 
 
@@ -96,6 +105,11 @@
         }
 
         context.putImageData(imgData, x, y);
+    }
+
+    function changeSaturation(saturation) {
+        reset();
+        //to do
     }
 
     function reset()
