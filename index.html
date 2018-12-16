@@ -29,15 +29,7 @@
         <div class="control-panel">
             <p>Nasycenie</p>
             <div class="btn-container">
-                    <button onclick="changeSaturation(0)">0</button>
-                    <button onclick="changeSaturation(0.25)">0.25</button>
-                    <button onclick="changeSaturation(0.5)">0.5</button>
-                    <button onclick="changeSaturation(0.75)">0.75</button>
-                    <button onclick="changeSaturation(1)">1</button>
-                    <button onclick="changeSaturation(1.25)">1.25</button>
-                    <button onclick="changeSaturation(1.5)">1.5</button>
-                    <button onclick="changeSaturation(1.75)">1.75</button>
-                    <button onclick="changeSaturation(2)">2</button>
+                <input type="range" min="0" max="200" id="saturationSlider">
             </div>
         </div>   
     </div>
@@ -89,7 +81,7 @@
         context.putImageData(imgData, x, y);
     })
 
-    function changeSaturation(saturation) {
+    saturation.addEventListener('change', function(){
         reset();
         let imgData = context.getImageData(x, y, imageObj.width, imageObj.height);
         let data = imgData.data;
@@ -97,14 +89,14 @@
         {
             let color = [data[i], data[i+1], data[i+2]]
             let hsv = RGBtoHSV(color);
-            hsv[1] *= saturation;
+            hsv[1] *= parseInt(saturation.value)/100;
             let rgb = HSVtoRGB(hsv);
             data[i] = rgb[0];
             data[i+1] = rgb[1];
             data[i+2] = rgb[2];
         }
         context.putImageData(imgData, x, y);
-    }
+    })
 
     function reset()
     {
