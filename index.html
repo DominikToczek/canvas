@@ -11,27 +11,43 @@
     <canvas id="myCanvas" width="900px" height="600px" ></canvas>
 
     <div class="control-container">
-        <div class="control-panel">
-            <p>Jasność</p>
-            <div class="btn-container">
-                <input type="range" min="-50" max="50" id="brightnessSlider">
+        <div class="control-box">
+            <div class="control-panel">
+                <p>Jasność</p>
+                <div class="btn-container">
+                    <input type="range" min="-50" max="50" id="brightnessSlider">
+                </div>
+            </div>
+            <div class="control-panel">
+                <p>Kontrast</p>
+                <div class="btn-container">
+                        <input type="range" min="-100" max="100" id="contrastSlider">
+                </div>
+            </div>
+            <div class="control-panel">
+                <p>Nasycenie</p>
+                <div class="btn-container">
+                    <input type="range" min="0" max="200" id="saturationSlider">
+                </div>
             </div>
         </div>
-        <div class="control-panel">
-            <p>Kontrast</p>
-            <div class="btn-container">
-                    <input type="range" min="-100" max="100" id="contrastSlider">
+        <div class="paint-container">
+            <div class="paint-box">
+                <input type="radio"><span id="black">Black</span><br>
+                <input type="radio"><span id="grey">Grey</span><br>
+                <input type="radio"><span id="white">White</span><br>
             </div>
-        </div> 
-    </div>
-
-    <div class="control-container">
-        <div class="control-panel">
-            <p>Nasycenie</p>
-            <div class="btn-container">
-                <input type="range" min="0" max="200" id="saturationSlider">
+            <div class="paint-box">
+                <input type="radio"><span id="red">Red</span><br>
+                <input type="radio"><span id="orange">Orange</span><br>
+                <input type="radio"><span id="yellow">Yellow</span><br>
             </div>
-        </div>   
+            <div class="paint-box">
+                <input type="radio"><span id="green">Green</span><br>
+                <input type="radio"><span id="blue">Blue</span><br>
+                <input type="radio"><span id="purple">Purple</span><br>
+            </div>
+        </div>
     </div>
     <script src="script.js"></script>    
 </body>
