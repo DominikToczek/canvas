@@ -158,3 +158,11 @@ const canvas = document.getElementById('myCanvas');
     }
 
     imageObj.src = 'img.jpg';
+
+    const resetBtn = document.getElementById('resetBtn');
+    resetBtn.addEventListener('click', function(){
+        context.drawImage(imageObj, x, y);
+        contrast.value = 0;
+        brightness.value = 0;
+        saturation.value = 100;
+    })

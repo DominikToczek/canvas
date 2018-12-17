@@ -7,6 +7,7 @@ body
     flex-direction: column;
     align-items: center;
     background: #1A1A1A;
+    color: white;
 }
 
 canvas {
@@ -31,7 +32,7 @@ canvas {
     margin: 0px 40px;
 }
 
-.btn-container {
+.slider-container {
     display: flex;
     flex-direction: row;
 }
@@ -53,6 +54,25 @@ canvas {
 
 .paint-box span {
     font-weight: 700;
+}
+
+.options-container {
+    display: flex;
+    flex-direction: column;
+    margin-left: 40px;
+}
+
+.load-img-box {
+    margin-top: 15px;
+}
+
+.load-img-box button {
+    margin-top: 5px;
+    margin-left: 90px;
+}
+
+.resetBtn {
+    margin-top: 100px;
 }
 
 #black {
