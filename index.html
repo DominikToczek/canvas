@@ -33,19 +33,23 @@
         </div>
         <div class="paint-container">
             <div class="paint-box">
-                <input type="radio" name="color" checked><span id="black">Black</span><br>
-                <input type="radio" name="color"><span id="grey">Grey</span><br>
-                <input type="radio" name="color"><span id="white">White</span><br>
+                <input type="radio" name="color" id="radio_black" checked><span id="black">Black</span><br>
+                <input type="radio" name="color" id="radio_grey"><span id="grey">Grey</span><br>
+                <input type="radio" name="color" id="radio_white"><span id="white">White</span><br>
             </div>
             <div class="paint-box">
-                <input type="radio" name="color"><span id="red">Red</span><br>
-                <input type="radio" name="color"><span id="orange">Orange</span><br>
-                <input type="radio" name="color"><span id="yellow">Yellow</span><br>
+                <input type="radio" name="color" id="radio_red"><span id="red">Red</span><br>
+                <input type="radio" name="color" id="radio_orange"><span id="orange">Orange</span><br>
+                <input type="radio" name="color" id="radio_yellow"><span id="yellow">Yellow</span><br>
             </div>
             <div class="paint-box">
-                <input type="radio" name="color"><span id="green">Green</span><br>
-                <input type="radio" name="color"><span id="blue">Blue</span><br>
-                <input type="radio" name="color"><span id="purple">Purple</span><br>
+                <input type="radio" name="color" id="radio_green"><span id="green">Green</span><br>
+                <input type="radio" name="color" id="radio_blue"><span id="blue">Blue</span><br>
+                <input type="radio" name="color" id="radio_purple"><span id="purple">Purple</span><br>
+            </div>
+            <div class="paint-box">
+                <div id="brush">Brush size:</div>
+                <input type="range" name="paintSize" id="sizeSlider" min="1" max="10">
             </div>
         </div>
         <div class="options-container">

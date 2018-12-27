@@ -173,3 +173,85 @@ HSVtoRGB= function(color) {
     }
     return [r,g,b];
 }
+
+
+
+
+
+
+let mousedown = false;
+canvas.addEventListener('mousedown', MouseDown);
+canvas.addEventListener('mouseup', MouseUp);
+canvas.addEventListener('mousemove', function(e) {
+    let mousePosition = GetMousePosition(canvas, e);
+    let x = mousePosition.x;
+    let y = mousePosition.y;
+    Draw(canvas, x, y);
+});
+
+function MouseDown() {
+    mousedown = true;
+}
+
+function MouseUp() {
+    mousedown = false;
+}
+
+function GetMousePosition(canvas, e) {
+    let rect = canvas.getBoundingClientRect();
+    return { x: e.clientX - rect.left, y: e.clientY - rect.top};
+}
+
+function Draw(canvas, x, y){
+    if (mousedown == true)
+    {
+        let brushSize = SetSize() 
+        context.fillRect(x, y, brushSize, brushSize);
+        SetColor();
+        context.stroke();
+    }
+}
+
+function SetSize()
+{
+    return parseInt(document.getElementById('sizeSlider').value);
+}
+
+function SetColor() {
+    if (document.getElementById('radio_black').checked)
+    {
+        context.fillStyle = "black";
+    }
+    if (document.getElementById('radio_grey').checked)
+    {
+        context.fillStyle = "grey";
+    }
+    if (document.getElementById('radio_white').checked)
+    {
+        context.fillStyle = "white";
+    }
+    if (document.getElementById('radio_red').checked)
+    {
+        context.fillStyle = "red";
+    }
+    if (document.getElementById('radio_orange').checked)
+    {
+        context.fillStyle = "orange";
+    }
+    if (document.getElementById('radio_yellow').checked)
+    {
+        context.fillStyle = "yellow";
+    }
+    if (document.getElementById('radio_green').checked)
+    {
+        context.fillStyle = "green";
+    }
+    if (document.getElementById('radio_blue').checked)
+    {
+        context.fillStyle = "blue";
+    }
+    if (document.getElementById('radio_purple').checked)
+    {
+        context.fillStyle = "purple";
+    }
+}
