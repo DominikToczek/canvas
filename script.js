@@ -5,6 +5,7 @@ const y = 0;
 const imageObj = new Image();
 const resetBtn = document.getElementById('resetBtn');
 
+// funkcja wczytująca wskazany obraz do obiektu canvas
 document.getElementById('loadBtn').addEventListener('click', function(){
     let loadImgPath = document.getElementById('loadImgPath').value;
     imageObj.src = loadImgPath;
@@ -14,6 +15,7 @@ document.getElementById('loadBtn').addEventListener('click', function(){
     }
 })
 
+// funkcja resetująca wartości suwaków
 resetBtn.addEventListener('click', function(){
     context.drawImage(imageObj, x, y);
     contrast.value = 0;
@@ -31,11 +33,13 @@ const brightness = document.getElementById('brightnessSlider');
 const contrast = document.getElementById('contrastSlider');
 const saturation = document.getElementById('saturationSlider');
 
+// funkcja pomocnicza do zmiany kolorów
 function truncate(value) {
     if (value < 0) return 0;
     if (value > 255) return 255;
     return value;
 }
+// funkcja zmieniająca jasność
 brightness.addEventListener('change', function(){
     reset();
     let imgData = context.getImageData(x, y, imageObj.width, imageObj.height);
@@ -51,6 +55,7 @@ brightness.addEventListener('change', function(){
     contrast.value = 0;
 })
 
+// funkcja zmieniająca kontrast
 contrast.addEventListener('change', function(){
     reset();
     let imgData = context.getImageData(x, y, imageObj.width, imageObj.height);
@@ -67,6 +72,7 @@ contrast.addEventListener('change', function(){
     brightness.value = 0;
 })
 
+// funkcja zmieniająca nasycenie
 saturation.addEventListener('change', function(){
     reset();
     let imgData = context.getImageData(x, y, imageObj.width, imageObj.height);
@@ -86,11 +92,13 @@ saturation.addEventListener('change', function(){
     brightness.value = 0;
 })
 
+// funkcja przywracająca oryginalne kolory obrazu
 function reset()
 {
     context.drawImage(imageObj, x, y);
 }
 
+// funkcja zmieniająca wartość koloru RGB na HSV
 function RGBtoHSV(color) {
     var r,g,b,h,s,v;
     r= color[0];
@@ -123,6 +131,8 @@ function RGBtoHSV(color) {
     return [h,s,v];
 }
 
+
+// funkcja zmieniająca wartość koloru HSV na RGB
 HSVtoRGB= function(color) {
     var i;
     var h,s,v,r,g,b;
@@ -196,12 +206,13 @@ function MouseDown() {
 function MouseUp() {
     mousedown = false;
 }
-
+// funkcja zwracająca pozycję wskaźnika myszy
 function GetMousePosition(canvas, e) {
     let rect = canvas.getBoundingClientRect();
     return { x: e.clientX - rect.left, y: e.clientY - rect.top};
 }
 
+// funkcja rysująca po obrazie
 function Draw(canvas, x, y){
     if (mousedown == true)
     {
@@ -211,12 +222,13 @@ function Draw(canvas, x, y){
         context.stroke();
     }
 }
-
+// funkcja ustawiająca rozmiar pędzla do rysowania
 function SetSize()
 {
     return parseInt(document.getElementById('sizeSlider').value);
 }
 
+// funkcja ustawiająca odpowiedni kolor do rysowania
 function SetColor() {
     if (document.getElementById('radio_black').checked)
     {
